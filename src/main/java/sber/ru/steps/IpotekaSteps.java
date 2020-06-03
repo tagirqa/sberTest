@@ -11,6 +11,7 @@ public class IpotekaSteps {
     @Step("Заполяем поля значениями")
     public IpotekaSteps inputFields() {
         IpotekaPage ipotekaPage = new IpotekaPage();
+        ipotekaPage.scrollToElement(ipotekaPage.iframeIpoteka);
         ipotekaPage.waitVisibilityOf(ipotekaPage.iframeIpoteka);
         BaseSteps.getDriver().switchTo().frame(ipotekaPage.iframeIpoteka);
 
@@ -48,7 +49,7 @@ public class IpotekaSteps {
     }
 
 
-    @Step("Выставляем галочку 'Есть зарплатная Карта'")
+    @Step("Убираем галочку 'Есть зарплатная Карта'")
     public IpotekaSteps checkboxPaidToCard() {
         IpotekaPage ipotekaPage = new IpotekaPage();
         ipotekaPage.clickElement(ipotekaPage.paidToCard);
