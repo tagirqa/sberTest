@@ -21,11 +21,13 @@ public class StepDefinitions {
         mainPageSteps.selectIpoteka();
     }
 
+    @When("скролл до калькулятора")
+    public void scrollToCalc(){
+        ipotekaSteps.inputFields();
+    }
     @When("заполняем поле стоимость недвижимости")
     public void inputTextCostEstate() {
-        ipotekaSteps
-                .inputFields()
-                .fieldCost();
+        ipotekaSteps.fieldCost();
     }
 
     @When("заполняем первоначальный взнос")

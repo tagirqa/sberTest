@@ -12,8 +12,9 @@ public class IpotekaSteps {
     public IpotekaSteps inputFields() {
         IpotekaPage ipotekaPage = new IpotekaPage();
         ipotekaPage.scrollToElement(ipotekaPage.iframeIpoteka);
-        ipotekaPage.waitVisibilityOf(ipotekaPage.iframeIpoteka);
         BaseSteps.getDriver().switchTo().frame(ipotekaPage.iframeIpoteka);
+//        ipotekaPage.waitVisibilityOf(ipotekaPage.iframeIpoteka);
+
 
         return this;
     }
@@ -69,20 +70,24 @@ public class IpotekaSteps {
         ipotekaPage.clickElement(ipotekaPage.youngFamilyDiscount);
 
         ipotekaPage.waitRefreshing(ipotekaPage.rate, "8,9 %");
-
+        ipotekaPage.waitRefreshing(ipotekaPage.realMonthlyPayment, "16 922 ₽");
         return this;
     }
 
     @Step("Проверка суммы кредита = {value}")
     public IpotekaSteps checkTextSumCredit(String value){
         IpotekaPage ipotekaPage = new IpotekaPage();
+
         assertEquals("Суммы не равны!", ipotekaPage.realEstateCost.getText(), value);
+
         return this;
     }
 
     @Step("Проверка ежемесячного платежа = {value}")
     public IpotekaSteps checkTextFirstMoney(String value){
+
         IpotekaPage ipotekaPage = new IpotekaPage();
+
         assertEquals("Суммы не равны!", ipotekaPage.realMonthlyPayment.getText(), value);
         return this;
     }
@@ -90,6 +95,7 @@ public class IpotekaSteps {
     @Step("Проверка необходимого дохода = {value}")
     public IpotekaSteps checkTextInCome(String value){
         IpotekaPage ipotekaPage = new IpotekaPage();
+
         assertEquals("Суммы не равны!", ipotekaPage.requiredIncome.getText(), value);
         return this;
     }
@@ -97,6 +103,8 @@ public class IpotekaSteps {
     @Step("Проверка нпроцентной ставки = {value}")
     public IpotekaSteps checkTextRate(String value){
         IpotekaPage ipotekaPage = new IpotekaPage();
+
+
         assertEquals("ставки не равны!", ipotekaPage.rate.getText(), value);
         return this;
     }
