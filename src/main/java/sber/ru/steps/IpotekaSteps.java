@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 
 import static org.junit.Assert.assertEquals;
 import sber.ru.pages.IpotekaPage;
+import sber.ru.utils.AllureUtils;
 
 public class IpotekaSteps {
 
@@ -12,8 +13,8 @@ public class IpotekaSteps {
     public IpotekaSteps inputFields() {
         IpotekaPage ipotekaPage = new IpotekaPage();
         ipotekaPage.scrollToElement(ipotekaPage.iframeIpoteka);
+        ipotekaPage.waitClickable(ipotekaPage.iframeIpoteka);
         BaseSteps.getDriver().switchTo().frame(ipotekaPage.iframeIpoteka);
-//        ipotekaPage.waitVisibilityOf(ipotekaPage.iframeIpoteka);
 
 
         return this;
@@ -103,10 +104,12 @@ public class IpotekaSteps {
     @Step("Проверка нпроцентной ставки = {value}")
     public IpotekaSteps checkTextRate(String value){
         IpotekaPage ipotekaPage = new IpotekaPage();
-
+        AllureUtils.takeScreenshot();
 
         assertEquals("ставки не равны!", ipotekaPage.rate.getText(), value);
         return this;
     }
+
+
 
 }

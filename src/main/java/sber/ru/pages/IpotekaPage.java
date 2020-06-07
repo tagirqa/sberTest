@@ -61,6 +61,7 @@ public class IpotekaPage extends BasePage {
     public IpotekaPage waitFieldAndInput(final WebElement element, final String text) {
         BaseSteps.wait.until(ExpectedConditions.elementToBeClickable(element));
         element.clear();
+
         element.sendKeys(text);
         return this;
     }
